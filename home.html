@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>数据资源中心存储区监控</title>
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/echarts.js"></script>
+	<script type="text/javascript" src="js/layui/layui.js"></script>
+	<script type="text/javascript" src="js/echarts-liquidfill-master/dist/echarts-liquidfill.js"></script>
+	<script type="text/javascript" src="js/home.js"></script>
+	<link rel="stylesheet" href="js/layui/css/layui.css">
+	<style type="text/css">
+	.bor{
+		border-bottom:none;
+		border: 1px #48D1CC solid;
+    	border-radius: 5px;
+    	box-shadow: 0px 0px 10px #388E8E;
+		/*border-left: none;
+		border-top:none;
+		border-bottom: none*/
+	}
+	span{
+		color:#fff;
+		font-family:'Microsoft JhengHei';
+	}
+	p{
+		color:#fff;
+		font-family: 'Microsoft JhengHei';
+	}
+	</style>
+</head>
+<body style="background-image: url(image/qietu/home/index-bg.jpg);background-size: 100% auto;">
+	<div style="text-align:center;margin-top:5px">
+		<!--<span style="font-size: 24px;font-weight: bold;color:#48D1CC;">数据资源中心存储区监控</span>-->
+		<img src="image/qietu/home/title.png"/>
+	</div>
+	<div style="text-align: center">
+		<span id="mytime" style="color:#48D1CC;"></span>
+	</div>
+	<div class="layui-container" style="margin-top: 10px">
+		<div class="layui-row">
+			<div class="layui-col-md2 bor" style="width:300px;text-align: center;background-image:url(image/qietu/home/border.png);background-size: 100% auto;float:center">
+				<span id="scjk" style="font-size: 20px;font-weight: bold;color:#48D1CC">生产数据库监控</span><br/>
+				<div class="" style="margin-top:15px;text-align:left;">
+					<p>
+						&nbsp;&nbsp;&nbsp;&nbsp;生产数据库存储区为可视化会商、智能决策、核心业务系统、政务系统等其他标段提供数据存储支撑
+					</p>
+				</div>
+				<hr style="width: 100%;height:1px;color:#ccc"/>
+				<div class="layui-row" style="border:1px solid #708090;border-left: none;border-top: none;border-right: none">
+					<div class="layui-col-md6 " style="margin-top:-20px">
+						<div style="width: 100%;height:160px;" id="sc"></div>
+					</div>
+					<div class="layui-col-md6" style="text-align: left;margin-top:10px">
+						<span styel="font-size:16px">存储区总空间:</span>&nbsp;&nbsp;<span id='sc_total' style="color:orange;font-size:22px;font-weight: bold">2TB</span><br/><br/>
+						<span styel="font-size:16px">已使用空间:</span>&nbsp;&nbsp;<span id='sc_data' style="color:orange;font-size:22px;font-weight: bold">1.2TB</span><br/><br/>
+						<span styel="font-size:16px">占用率:</span>&nbsp;&nbsp;<span id='sc_zyl' style="color:orange;font-size:22px;font-weight: bold">60%</span>
+					</div>
+				</div>
+
+				<div style="border:1px solid #708090;border-left: none;border-top: none;border-right: none">
+					<span styel="font-size:20px;">当前数据共</span>&nbsp;&nbsp;<span style="color:orange;font-size:22px;font-weight: bold">1260230</span>&nbsp;&nbsp;<span styel="font-size:20px;">条数据</span><br/>
+					<span styel="font-size:16px">正常实例数/总实例数:</span>&nbsp;&nbsp;<span style="color:orange;font-size:22px;font-weight: bold">10/11</span><br/>
+					<span styel="font-size:16px">每日平均请求</span>&nbsp;&nbsp;<span style="color:orange;font-size:22px;font-weight: bold">123</span>&nbsp;&nbsp;<span styel="font-size:20px;">次</span><br/><br/>
+					<div id="sc_line" style="width: 100%;height:200px;margin-top:-40px"></div>
+				</div>
+				
+			</div>
+			<div class="layui-col-md2 bor" style="width:300px;margin-left:30px;text-align: center">
+				<span id="jrjk" style="font-size: 20px;font-weight: bold;color:#48D1CC">数据接入数据库监控</span>
+				<div class="" style="margin-top:15px;text-align:left;">
+					<p>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						数据接入数据库存储区为局内各应用、省平台、央企、国家数据共享交换平台等接入的数据提供数据存储支撑
+					</p>
+				</div>
+				<hr style="width: 100%;height:1px;color:#ccc"/>
+				<div class="layui-row" style="border:1px solid #708090;border-left: none;border-top: none;border-right: none">
+					<div class="layui-col-md6 " style="margin-top:-20px">
+						<div style="width: 100%;height:160px;" id="jr"></div>
+					</div>
+					<div class="layui-col-md6" style="text-align: left;margin-top:10px">
+						<span styel="font-size:16px">存储区总空间:</span>&nbsp;&nbsp;<span id='jr_total' style="color:orange;font-size:22px;font-weight: bold">2TB</span><br/><br/>
+						<span styel="font-size:16px">已使用空间:</span>&nbsp;&nbsp;<span id='jr_data' style="color:orange;font-size:22px;font-weight: bold">1.2TB</span><br/><br/>
+						<span styel="font-size:16px">占用率:</span>&nbsp;&nbsp;<span id='jr_zyl' style="color:orange;font-size:22px;font-weight: bold">60%</span>
+					</div>
+				</div>
+				<div style="border:1px solid #708090;border-left: none;border-top: none;border-right: none">
+					<span styel="font-size:20px;">当前数据共</span>&nbsp;&nbsp;<span style="color:orange;font-size:22px;font-weight: bold">2000230</span>&nbsp;&nbsp;<span styel="font-size:20px;">条数据</span><br/>
+					<span styel="font-size:16px">正常实例数/总实例数:</span>&nbsp;&nbsp;<span style="color:orange;font-size:22px;font-weight: bold">12/12</span><br/>
+					<span styel="font-size:16px">每日平均请求</span>&nbsp;&nbsp;<span style="color:orange;font-size:22px;font-weight: bold">221</span>&nbsp;&nbsp;<span styel="font-size:20px;">次</span><br/><br/>
+					<div id="jr_line" style="width: 100%;height:200px;margin-top:-40px"></div>
+				</div>
+				
+			</div>
+			<div class="layui-col-md2 bor" style="width:290px;margin-left:30px;text-align: center">
+				<span id="mxjk" style="font-size: 20px;font-weight: bold;color:#48D1CC">模型数据库监控</span>
+				<div class="" style="margin-top:15px;text-align:left;">
+					<p>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						模型数据库存储区为经过数据加工处理形成的业务模型数据和政务模型数据提供数据存储支撑
+					</p>
+				</div>
+				<hr style="width: 100%;height:1px;color:#ccc"/>
+				<div class="layui-row" style="border:1px solid #708090;border-left: none;border-top: none;border-right: none">
+					<div class="layui-col-md6 " style="margin-top:-20px">
+						<div style="width: 100%;height:160px;" id="mx"></div>
+					</div>
+					<div class="layui-col-md6" style="text-align: left;margin-top:10px">
+						<span styel="font-size:16px">存储区总空间:</span>&nbsp;&nbsp;<span id='mx_total' style="color:orange;font-size:22px;font-weight: bold">2TB</span><br/><br/>
+						<span styel="font-size:16px">已使用空间:</span>&nbsp;&nbsp;<span  id='mx_data' style="color:orange;font-size:22px;font-weight: bold">1.2TB</span><br/><br/>
+						<span styel="font-size:16px">占用率:</span>&nbsp;&nbsp;<span id='mx_zyl' style="color:orange;font-size:22px;font-weight: bold">60%</span>
+					</div>
+				</div>
+				<div style="border:1px solid #708090;border-left: none;border-top: none;border-right: none">
+					<span styel="font-size:20px;">当前数据共</span>&nbsp;&nbsp;<span style="color:orange;font-size:22px;font-weight: bold">2200230</span>&nbsp;&nbsp;<span styel="font-size:20px;">条数据</span><br/>
+					<span styel="font-size:16px">正常实例数/总实例数:</span>&nbsp;&nbsp;<span style="color:orange;font-size:22px;font-weight: bold">8/8</span><br/>
+					<span styel="font-size:16px">每日平均请求</span>&nbsp;&nbsp;<span style="color:orange;font-size:22px;font-weight: bold">300</span>&nbsp;&nbsp;<span styel="font-size:20px;">次</span><br/><br/>
+					<div id="mx_line" style="width: 100%;height:200px;margin-top:-40px"></div>
+				</div>
+				
+			</div>
+			<div class="layui-col-md2 bor" style="width:290px;margin-left:30px;text-align: center">
+				<span id="fjghjk" style="font-size: 20px;font-weight: bold;color:#48D1CC">非结构化数据存储监控</span>
+				<div class="" style="margin-top:15px;text-align:left;">
+					<p>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						非结构化数据存储区为各来源的非结构化数据，包括视频、图片、文档等提供数据存储支撑
+					</p>
+				</div>
+				<hr style="width: 100%;height:1px;color:#ccc"/>
+				<div class="layui-row" style="border:1px solid #708090;border-left: none;border-top: none;border-right: none">
+					<div class="layui-col-lg6 " style="margin-top:-20px">
+						<div style="width: 100%;height:160px;" id="fjgh"></div>
+					</div>
+					<div class="layui-col-lg6" style="text-align: left;margin-top:10px">
+						<span styel="font-size:16px">存储区总空间:</span>&nbsp;&nbsp;<span id='fjgh_total' style="color:orange;font-size:22px;font-weight: bold">2TB</span><br/><br/>
+						<span styel="font-size:16px">已使用空间:</span>&nbsp;&nbsp;<span id='fjgh_data' style="color:orange;font-size:22px;font-weight: bold">1.2TB</span><br/><br/>
+						<span styel="font-size:16px">占用率:</span>&nbsp;&nbsp;<span id='fjgh_zyl' style="color:orange;font-size:22px;font-weight: bold">60%</span>
+					</div>
+				</div>
+				<div style="border:1px solid #708090;border-left: none;border-top: none;border-right: none">
+					<span styel="font-size:20px;">当前数据共</span>&nbsp;&nbsp;<span style="color:orange;font-size:22px;font-weight: bold">1000230</span>&nbsp;&nbsp;<span styel="font-size:20px;">条数据</span><br/>
+					<span styel="font-size:16px">正常实例数/总实例数:</span>&nbsp;&nbsp;<span style="color:orange;font-size:22px;font-weight: bold">8/8</span><br/>
+					<span styel="font-size:16px">每日平均请求</span>&nbsp;&nbsp;<span style="color:orange;font-size:22px;font-weight: bold">190</span>&nbsp;&nbsp;<span styel="font-size:20px;">次</span><br/><br/>
+					<div id="fjgh_line" style="width: 100%;height:200px;margin-top:-40px"></div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+window.onload=init();
+hoverAndRedirect("scjk");
+hoverAndRedirect("mxjk")
+</script>
+</html>

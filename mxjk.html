@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>模型数据库监控</title>
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/echarts.js"></script>
+	<script type="text/javascript" src="js/layui/layui.js"></script>
+	<script type="text/javascript" src="js/echarts-liquidfill-master/dist/echarts-liquidfill.js"></script>
+	<script type="text/javascript" src="js/mx.js"></script>
+	<link rel="stylesheet" href="js/layui/css/layui.css">
+	<style type="text/css">
+	.bor{
+		border-bottom:none;
+		border: 1px #48D1CC solid;
+    	border-radius: 5px;
+    	box-shadow: 0px 0px 10px #388E8E;
+	}
+	span{
+		color:#fff;
+		font-family:'Microsoft YaHei';
+	}
+	p{
+		color:#fff;
+		font-family: 'Microsoft YaHei';
+	}
+	</style>
+</head>
+<body style="background-image: url(image/bg.png);background-size: 100% auto;">
+	<div style="text-align:center;margin-top:10px">
+		<span style="font-size: 24px;font-weight: bold;color:#48D1CC;">模型数据库监控</span>
+	</div>
+	<hr style="width:100%;height:1px;background-color:#708090"/>
+	<div style="text-align: center">
+		<span id="mytime" style="color:#48D1CC;"></span>
+	</div>
+	<div class="layui-container">
+		<div class="layui-row">
+			<div class="layui-col-md5 bor" style="height:355px">
+				<div style="text-align:center;margin-top:10px">
+					<span style="font-size: 16px;font-weight: bold;color:#48D1CC;">数据库运行状态监控</span>
+				</div>
+				<div class="layui-row">
+					<div class="layui-row">
+						<div id="ksh" class="layui-col-md2 bor" style="text-align: center;margin-left:20px;height:55px;margin-top:10px">
+							<span>可视化会商</span><br/>
+							<img src="image/db.png"/><br/>
+						</div>
+						<div id="znjc" class="layui-col-md2 bor" style="text-align: center;margin-left:20px;height:55px;margin-top:10px">
+							<span>智能决策</span><br/>
+							<img src="image/db.png"/><br/>							
+						</div>
+						<div id="hxyw" class="layui-col-md2 bor" style="text-align: center;margin-left:20px;height:55px;margin-top:10px">
+							<span>核心业务</span><br/>
+							<img src="image/db.png"/><br/>
+						</div>
+						<div id="hxyw" class="layui-col-md2 bor" style="text-align: center;margin-left:20px;height:55px;margin-top:10px">
+							<span>核心业务</span><br/>
+							<img src="image/db.png"/><br/>
+						</div>
+					</div>
+					<div class="layui-row">
+						<div id="ksh" class="layui-col-md2 bor" style="text-align: center;margin-left:20px;height:55px;margin-top:10px">
+							<span>可视化会商</span><br/>
+							<img src="image/db.png"/><br/>
+						</div>
+						<div id="znjc" class="layui-col-md2 bor" style="text-align: center;margin-left:20px;height:55px;margin-top:10px">
+							<span>智能决策</span><br/>
+							<img src="image/db.png"/><br/>							
+						</div>
+						<div id="hxyw" class="layui-col-md2 bor" style="text-align: center;margin-left:20px;height:55px;margin-top:10px">
+							<span>核心业务</span><br/>
+							<img src="image/db.png"/><br/>
+						</div>
+						<div id="hxyw" class="layui-col-md2 bor" style="text-align: center;margin-left:20px;height:55px;margin-top:10px">
+							<span>核心业务</span><br/>
+							<img src="image/db.png"/><br/>
+						</div>
+					</div>
+					<div class="layui-row">
+						<div id="ksh" class="layui-col-md2 bor" style="text-align: center;margin-left:20px;height:55px;margin-top:10px">
+							<span>可视化会商</span><br/>
+							<img src="image/db.png"/><br/>
+						</div>
+						<div id="znjc" class="layui-col-md2 bor" style="text-align: center;margin-left:20px;height:55px;margin-top:10px">
+							<span>智能决策</span><br/>
+							<img src="image/db.png"/><br/>							
+						</div>
+						<div id="hxyw" class="layui-col-md2 bor" style="text-align: center;margin-left:20px;height:55px;margin-top:10px">
+							<span>核心业务</span><br/>
+							<img src="image/db.png"/><br/>
+						</div>
+						<div id="hxyw" class="layui-col-md2 bor" style="text-align: center;margin-left:20px;height:55px;margin-top:10px">
+							<span>核心业务</span><br/>
+							<img src="image/db.png"/><br/>
+						</div>
+					</div>
+					<div class="layui-row">
+						<div id="ksh" class="layui-col-md2 bor" style="text-align: center;margin-left:20px;height:55px;margin-top:10px">
+							<span>可视化会商</span><br/>
+							<img src="image/db.png"/><br/>
+						</div>
+						<div id="znjc" class="layui-col-md2 bor" style="text-align: center;margin-left:20px;height:55px;margin-top:10px">
+							<span>智能决策</span><br/>
+							<img src="image/db.png"/><br/>							
+						</div>
+						<div id="hxyw" class="layui-col-md2 bor" style="text-align: center;margin-left:20px;height:55px;margin-top:10px">
+							<span>核心业务</span><br/>
+							<img src="image/db.png"/><br/>
+						</div>
+						<div id="hxyw" class="layui-col-md2 bor" style="text-align: center;margin-left:20px;height:55px;margin-top:10px">
+							<span>核心业务</span><br/>
+							<img src="image/db.png"/><br/>
+						</div>
+					</div>
+					<div class="layui-row">
+						<div id="ksh" class="layui-col-md2 bor" style="text-align: center;margin-left:20px;height:55px;margin-top:10px">
+							<span>可视化会商</span><br/>
+							<img src="image/db.png"/><br/>
+						</div>
+						<div id="znjc" class="layui-col-md2 bor" style="text-align: center;margin-left:20px;height:55px;margin-top:10px">
+							<span>智能决策</span><br/>
+							<img src="image/db.png"/><br/>							
+						</div>
+						<div id="hxyw" class="layui-col-md2 bor" style="text-align: center;margin-left:20px;height:55px;margin-top:10px">
+							<span>核心业务</span><br/>
+							<img src="image/db.png"/><br/>
+						</div>
+						<div id="hxyw" class="layui-col-md2 bor" style="text-align: center;margin-left:20px;height:55px;margin-top:10px">
+							<span>核心业务</span><br/>
+							<img src="image/db.png"/><br/>
+						</div>
+					</div>
+					<div class="layui-row">
+						<div id="ksh" class="layui-col-md2 bor" style="text-align: center;margin-left:20px;height:55px;margin-top:10px">
+							<span>可视化会商</span><br/>
+							<img src="image/db.png"/><br/>
+						</div>
+						<div id="znjc" class="layui-col-md2 bor" style="text-align: center;margin-left:20px;height:55px;margin-top:10px">
+							<span>智能决策</span><br/>
+							<img src="image/db.png"/><br/>							
+						</div>
+						<div id="hxyw" class="layui-col-md2 bor" style="text-align: center;margin-left:20px;height:55px;margin-top:10px">
+							<span>核心业务</span><br/>
+							<img src="image/db.png"/><br/>
+						</div>
+						<div id="hxyw" class="layui-col-md2 bor" style="text-align: center;margin-left:20px;height:55px;margin-top:10px">
+							<span>核心业务</span><br/>
+							<img src="image/db.png"/><br/>
+						</div>
+					</div>
+					<div class="layui-row">
+						<div id="ksh" class="layui-col-md2 bor" style="text-align: center;margin-left:20px;height:55px;margin-top:10px">
+							<span>可视化会商</span><br/>
+							<img src="image/db.png"/><br/>
+						</div>
+						<div id="znjc" class="layui-col-md2 bor" style="text-align: center;margin-left:20px;height:55px;margin-top:10px">
+							<span>智能决策</span><br/>
+							<img src="image/db.png"/><br/>							
+						</div>
+						<div id="hxyw" class="layui-col-md2 bor" style="text-align: center;margin-left:20px;height:55px;margin-top:10px">
+							<span>核心业务</span><br/>
+							<img src="image/db.png"/><br/>
+						</div>
+						<div id="hxyw" class="layui-col-md2 bor" style="text-align: center;margin-left:20px;height:55px;margin-top:10px">
+							<span>核心业务</span><br/>
+							<img src="image/db.png"/><br/>
+						</div>
+					</div>
+					<div class="layui-row">
+						<div id="ksh" class="layui-col-md2 bor" style="text-align: center;margin-left:20px;height:55px;margin-top:10px">
+							<span>可视化会商</span><br/>
+							<img src="image/db.png"/><br/>
+						</div>
+						<div id="znjc" class="layui-col-md2 bor" style="text-align: center;margin-left:20px;height:55px;margin-top:10px">
+							<span>智能决策</span><br/>
+							<img src="image/db.png"/><br/>							
+						</div>
+						<div id="hxyw" class="layui-col-md2 bor" style="text-align: center;margin-left:20px;height:55px;margin-top:10px">
+							<span>核心业务</span><br/>
+							<img src="image/db.png"/><br/>
+						</div>
+						<div id="hxyw" class="layui-col-md2 bor" style="text-align: center;margin-left:20px;height:55px;margin-top:10px">
+							<span>核心业务</span><br/>
+							<img src="image/db.png"/><br/>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="layui-col-md6 bor" style="margin-left:20px;height:355px">
+				
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+window.onload=init();
+</script>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>模型数据库监控</title>
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/echarts.js"></script>
+	<script type="text/javascript" src="js/layui/layui.js"></script>
+	<script type="text/javascript" src="js/echarts-liquidfill-master/dist/echarts-liquidfill.js"></script>
+	<script type="text/javascript" src="js/mx.js"></script>
+	<link rel="stylesheet" href="js/layui/css/layui.css">
+	<style type="text/css">
+	.bor{
+		border-bottom:none;
+		border: 1px #48D1CC solid;
+    	border-radius: 5px;
+    	box-shadow: 0px 0px 10px #388E8E;
+	}
+	span{
+		color:#fff;
+		font-family:'Microsoft YaHei';
+	}
+	p{
+		color:#fff;
+		font-family: 'Microsoft YaHei';
+	}
+	</style>
+</head>
+<body style="background-image: url(image/bg.png);background-size: 100% auto;">
+	<div style="text-align:center;margin-top:10px">
+		<span style="font-size: 24px;font-weight: bold;color:#48D1CC;">模型数据库监控</span>
+	</div>
+	<hr style="width:100%;height:1px;background-color:#708090"/>
+	<div style="text-align: center">
+		<span id="mytime" style="color:#48D1CC;"></span>
+	</div>
+	<div class="layui-container" style="margin-top:20px">
+		<div class="layui-row">
+			<div class="layui-col-md4 bor" style="height:525px;">
+				<div style="text-align:left;margin-top:10px">
+					<span style="font-size: 14px;font-weight: bold;color:#48D1CC;margin-left:10px">粮食业务模型</span>
+				</div>
+				<div class="bor" style="width: 94%;float:center;margin-left:13px;margin-top:10px;height:273px">
+					<div class="layui-row">
+						<div id="lssc" class="layui-col-md2 bor" style="text-align: center;margin-left:10px;height:55px;margin-top:10px">
+							<span>粮食生产</span><br/>
+							<img src="image/mx.png"/><br/>
+						</div>
+						<div id="lskc" class="layui-col-md2 bor" style="text-align: center;margin-left:10px;height:55px;margin-top:10px">
+							<span>粮食库存</span><br/>
+							<img src="image/mx.png"/><br/>							
+						</div>
+						<div id="lssg" class="layui-col-md2 bor" style="text-align: center;margin-left:10px;height:55px;margin-top:10px">
+							<span>粮食收购</span><br/>
+							<img src="image/mx.png"/><br/>
+						</div>
+						<div id="lsxs" class="layui-col-md2 bor" style="text-align: center;margin-left:10px;height:55px;margin-top:10px">
+							<span>粮食销售</span><br/>
+							<img src="image/mx.png"/><br/>
+						</div>
+						<div id="lswl" class="layui-col-md2 bor" style="text-align: center;margin-left:10px;height:55px;margin-top:10px">
+							<span>粮食物流</span><br/>
+							<img src="image/mx.png"/><br/>
+						</div>
+					</div>
+					<div class="layui-row">
+						<div id="lsjg" class="layui-col-md2 bor" style="text-align: center;margin-left:10px;height:55px;margin-top:10px">
+							<span>粮食加工</span><br/>
+							<img src="image/mx.png"/><br/>
+						</div>
+						<div id="jck" class="layui-col-md2 bor" style="text-align: center;margin-left:10px;height:55px;margin-top:10px">
+							<span>进出口</span><br/>
+							<img src="image/mx.png"/><br/>							
+						</div>
+						<div id="lsmy" class="layui-col-md2 bor" style="text-align: center;margin-left:10px;height:55px;margin-top:10px">
+							<span>粮食贸易</span><br/>
+							<img src="image/mx.png"/><br/>
+						</div>
+						<div id="lsjy" class="layui-col-md2 bor" style="text-align: center;margin-left:10px;height:55px;margin-top:10px">
+							<span>粮食交易</span><br/>
+							<img src="image/mx.png"/><br/>
+						</div>
+						<div id="lsjg" class="layui-col-md2 bor" style="text-align: center;margin-left:10px;height:55px;margin-top:10px">
+							<span>粮食价格</span><br/>
+							<img src="image/mx.png"/><br/>
+						</div>
+					</div>
+					<div class="layui-row">
+						<div id="lsxf" class="layui-col-md2 bor" style="text-align: center;margin-left:10px;height:55px;margin-top:10px">
+							<span>粮食消费</span><br/>
+							<img src="image/mx.png"/><br/>
+						</div>
+						<div id="qyxx" class="layui-col-md2 bor" style="text-align: center;margin-left:10px;height:55px;margin-top:10px">
+							<span>企业信息</span><br/>
+							<img src="image/mx.png"/><br/>							
+						</div>
+						<div id="lqjy" class="layui-col-md2 bor" style="text-align: center;margin-left:10px;height:55px;margin-top:10px">
+							<span>粮企经营</span><br/>
+							<img src="image/mx.png"/><br/>
+						</div>
+						<div id="lszl" class="layui-col-md2 bor" style="text-align: center;margin-left:10px;height:55px;margin-top:10px">
+							<span>粮食质量</span><br/>
+							<img src="image/mx.png"/><br/>
+						</div>
+						<div id="lqxy" class="layui-col-md2 bor" style="text-align: center;margin-left:10px;height:55px;margin-top:10px">
+							<span>粮企信用</span><br/>
+							<img src="image/mx.png"/><br/>
+						</div>
+					</div>
+					<div class="layui-row">
+						<div id="lsss" class="layui-col-md2 bor" style="text-align: center;margin-left:10px;height:55px;margin-top:10px">
+							<span>粮食设施</span><br/>
+							<img src="image/mx.png"/><br/>
+						</div>
+						<div id="hghj" class="layui-col-md2 bor" style="text-align: center;margin-left:10px;height:55px;margin-top:10px">
+							<span>宏观环境</span><br/>
+							<img src="image/mx.png"/><br/>							
+						</div>
+						
+					</div>
+				</div>
+				<div style="text-align:left;margin-top:10px">
+					<span style="font-size: 14px;font-weight: bold;color:#48D1CC;margin-left:10px">政务模型</span>
+				</div>
+				<div class="bor" style="width: 94%;float:center;margin-left:13px;margin-top:10px;height:142px">
+					<div class="layui-row">
+						<div id="zfjd" class="layui-col-md2 bor" style="text-align: center;margin-left:10px;height:55px;margin-top:10px">
+							<span>执法监督</span><br/>
+							<img src="image/mx.png"/><br/>
+						</div>
+						<div id="yjbz" class="layui-col-md2 bor" style="text-align: center;margin-left:10px;height:55px;margin-top:10px">
+							<span>应急保障</span><br/>
+							<img src="image/mx.png"/><br/>							
+						</div>
+						<div id="rcpx" class="layui-col-md2 bor" style="text-align: center;margin-left:10px;height:55px;margin-top:10px">
+							<span>人才培训</span><br/>
+							<img src="image/mx.png"/><br/>
+						</div>
+						<div id="flfg" class="layui-col-md2 bor" style="text-align: center;margin-left:10px;height:55px;margin-top:10px">
+							<span>法律法规</span><br/>
+							<img src="image/mx.png"/><br/>
+						</div>
+						<div id="gjhz" class="layui-col-md2 bor" style="text-align: center;margin-left:10px;height:55px;margin-top:10px">
+							<span>国际合作</span><br/>
+							<img src="image/mx.png"/><br/>
+						</div>
+					</div>
+					<div class="layui-row">
+						<div id="hygl" class="layui-col-md2 bor" style="text-align: center;margin-left:10px;height:55px;margin-top:10px">
+							<span>会议管理</span><br/>
+							<img src="image/mx.png"/><br/>
+						</div>
+						<div id="rsda" class="layui-col-md2 bor" style="text-align: center;margin-left:10px;height:55px;margin-top:10px">
+							<span>人事档案</span><br/>
+							<img src="image/mx.png"/><br/>							
+						</div>
+						<div id="cwgl" class="layui-col-md2 bor" style="text-align: center;margin-left:10px;height:55px;margin-top:10px">
+							<span>财务管理</span><br/>
+							<img src="image/mx.png"/><br/>
+						</div>
+						<div id="gwlz" class="layui-col-md2 bor" style="text-align: center;margin-left:10px;height:55px;margin-top:10px">
+							<span>公文流转</span><br/>
+							<img src="image/mx.png"/><br/>
+						</div>
+						<div id="hqgl" class="layui-col-md2 bor" style="text-align: center;margin-left:10px;height:55px;margin-top:10px">
+							<span>后勤管理</span><br/>
+							<img src="image/mx.png"/><br/>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="layui-col-md7 bor" style="margin-left:35px;height:525px;width:811px">
+				<div id="zh_title" class="bor" style="height:130px;text-align:center;display: block">
+					<div style="width: 100%;height:10px"></div>
+					<span styel="font-size:22px;">共有</span>&nbsp;&nbsp;<span style="color:orange;font-size:24px;font-weight: bold">27</span>&nbsp;&nbsp;<span styel="font-size::22px;">个模型</span><br/>
+					<div style="width: 100%;height:10px"></div>
+					<span styel="font-size:22px;">其中业务模型</span>&nbsp;&nbsp;<span style="color:orange;font-size:24px;font-weight: bold">17</span>&nbsp;&nbsp;<span styel="font-size::22px;">个,</span>
+					<span styel="font-size:22px;">政务模型</span>&nbsp;&nbsp;<span style="color:orange;font-size:24px;font-weight: bold">10</span>&nbsp;&nbsp;<span styel="font-size::22px;">个</span>
+					<br/>
+					<div style="width: 100%;height:10px"></div>
+					<span styel="font-size:22px;">当前共有</span>&nbsp;&nbsp;<span style="color:orange;font-size:24px;font-weight: bold">223020030</span>&nbsp;&nbsp;<span styel="font-size::22px;">条数据</span><br/>
+				</div>
+				<div id="fmx_title" class="bor" style="height:130px;text-align:center;display: none">
+					<div style="width: 100%;height:30px"></div>
+					<span styel="font-size:22px;">当前共有</span>&nbsp;&nbsp;<span style="color:orange;font-size:24px;font-weight: bold">2701034</span>&nbsp;&nbsp;<span styel="font-size::22px;">条数据</span><br/>
+					<div style="width: 100%;height:10px"></div>
+					<span styel="font-size:22px;">平均每日访问</span>&nbsp;&nbsp;<span style="color:orange;font-size:24px;font-weight: bold">42</span>&nbsp;&nbsp;<span styel="font-size::22px;">次</span>
+					
+				</div>
+				<div class="bor" id='sjlbh' style="height:180px;margin-top:10px"></div>
+				<div class="bor" id='qqsbh' style="height:180px;margin-top:10px"></div>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+window.onload=init();
+hoverAndRedirect("ksh");
+	hoverAndRedirect("lssc");
+	hoverAndRedirect("lskc");
+	hoverAndRedirect("lssg");
+	hoverAndRedirect("lsxs");
+	hoverAndRedirect("lswl");
+	hoverAndRedirect("lsjg");
+	hoverAndRedirect("jck");
+	hoverAndRedirect("lsmy");
+	hoverAndRedirect("lsjy");
+	hoverAndRedirect("lsjg");
+	hoverAndRedirect("lsxf");
+	hoverAndRedirect("qyxx");
+	hoverAndRedirect("lqjy");
+	hoverAndRedirect("lszl");
+	hoverAndRedirect("lqxy");
+	hoverAndRedirect("lsss");
+	hoverAndRedirect("hghj");
+	hoverAndRedirect("zfjd");
+	hoverAndRedirect("yjbz");
+	hoverAndRedirect("rcpx");
+	hoverAndRedirect("flfg");
+	hoverAndRedirect("gjhz");
+	hoverAndRedirect("hygl");
+	hoverAndRedirect("rsda");
+	hoverAndRedirect("cwgl");
+	hoverAndRedirect("gwlz");
+	hoverAndRedirect("hqgl");
+</script>
+</html>
